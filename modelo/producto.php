@@ -12,13 +12,11 @@
             $sql = "SELECT * FROM productos limit 1, 10";
             $arreglo = array();
             if($consulta = $this->conexion->conexion->query($sql)){
-                return $consulta_vu = mysqli_fetch_assoc($consulta);
                 while($consulta_vu = mysqli_fetch_assoc($consulta)) {
-                        $arreglo["data"][] =$consulta_vu;
-                    
+                    $arreglo[] =$consulta_vu;                    
                 }
-                return $arreglo;
                 $this->conexion->cerrar();
+                return $arreglo;
             }
         }
     }
@@ -51,6 +49,6 @@ echo "<--------------------------------------------------------------><br><br>";
 $MR = new ProductoLi();
 $consulta = $MR->listar();
 foreach ($consulta as $key => $value) {    
-    echo $value."<br>";
+    echo  $value['nombre']."<br>";
 }
 
