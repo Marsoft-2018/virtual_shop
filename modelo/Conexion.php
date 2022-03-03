@@ -3,8 +3,8 @@
         private $host = "localhost";
         private $bdt = "bdt_virtualshop";        
         private $usuario= "root";
-        //private $password = ""; //password xampp
-        private $password = "password"; //password para linux
+        private $password = ""; //password xampp
+        //private $password = "password"; //password para linux
 
         private $link;
         protected $Conexion;
@@ -38,8 +38,8 @@
 
 		    $this->servidor = "localhost";
 			$this->usuario = "root";
-			//$this->contrasena = ""; //password xampp
-			$this->contrasena = "password";//password para linux
+			$this->contrasena = ""; //password xampp
+			//$this->contrasena = "password";//password para linux
 			$this->basedatos = "bdt_virtualshop";
         }
 

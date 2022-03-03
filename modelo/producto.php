@@ -21,7 +21,7 @@
         }
     }
 
-require("Conexion.php");
+
 class ProductoPDO extends conexionPDO {
 	
     private $sql;
@@ -39,16 +39,4 @@ class ProductoPDO extends conexionPDO {
     }
 }
 
-//Prueba...
-$obj = new ProductoPDO();
-foreach ($obj->listar() as $value) {
-    echo $value['nombre']."<br>";
-}
-
-echo "<--------------------------------------------------------------><br><br>";
-$MR = new ProductoLi();
-$consulta = $MR->listar();
-foreach ($consulta as $key => $value) {    
-    echo  $value['nombre']."<br>";
-}
 
