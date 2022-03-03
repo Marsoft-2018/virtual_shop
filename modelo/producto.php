@@ -1,21 +1,15 @@
 <?php
-    class ProductoLi {
-        private $conexion;
-        function __construct()
-        {
-            require_once 'Conexion.php';
-            $this->conexion = new conexionLi();
-            $this->conexion->conectar();
-        }
-
+    class ProductoLi extends conexionLi {
+        //private $conexion;
+        
         function listar() {
             $sql = "SELECT * FROM productos limit 1, 10";
             $arreglo = array();
-            if($consulta = $this->conexion->conexion->query($sql)){
+            if($consulta = $this->conexion->query($sql)){
                 while($consulta_vu = mysqli_fetch_assoc($consulta)) {
                     $arreglo[] =$consulta_vu;                    
                 }
-                $this->conexion->cerrar();
+                $this->conexion->close();
                 return $arreglo;
             }
         }

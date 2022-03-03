@@ -15,9 +15,9 @@
             }
 
             echo "||--------------------------------------------------------------||<br><br>";
-            $MR = new ProductoLi();
-            $consulta = $MR->listar();
-            foreach ($consulta as $value) {    
+            $producto = new ProductoLi();
+            $registro = $producto->listar();
+            foreach ($registro as $value) {    
                 echo  $value['nombre']."<br>";
             }
             break;
