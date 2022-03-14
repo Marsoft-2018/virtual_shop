@@ -1,5 +1,5 @@
 <?php
-    class ProductoLi extends conexionLi {
+    class ProductoLi extends conexion {
         //private $conexion;
         
         function listar() {
@@ -13,24 +13,9 @@
                 return $arreglo;
             }
         }
+
+        function agregar
     }
 
-
-class ProductoPDO extends conexionPDO {
-	
-    private $sql;
-
-    public function listar(){
-        $this->sql = "SELECT * FROM productos limit 1, 10";
-        try {
-           $stm = $this->Conexion->prepare($this->sql);
-           $stm->execute();
-           $reg = $stm->fetchAll(PDO::FETCH_ASSOC);  
-           return $reg; 				
-        } catch (Exception $e) {
-            echo "Error al consultar los datos. <br>".$e;
-        }
-    }
-}
-
+?>
 
