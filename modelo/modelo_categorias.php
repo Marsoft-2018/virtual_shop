@@ -5,17 +5,17 @@ class Modelo_Categorias extends conexion{
 	public $categoria;
 	public $descripcion;
 
-	function listar_categorias($id_seccion) {
+	function listar() {
 	 	$sql = "SELECT `categorias`.`id`, `categorias`.`nombre`, `categorias`.`descripcion`
     , `categorias`.`idSeccion`, `secciones`.`nombre` AS `seccion`, `categorias`.`estado`
     , `categorias`.`fechaRegistro` FROM `categorias`
     INNER JOIN `secciones` 
         ON (`categorias`.`idSeccion` = `secciones`.`id`)
-        WHERE categorias.`idSeccion` = '$id_seccion'";
+        WHERE categorias.`idSeccion` = '".$this->idSeccion."'";
 			$arreglo = array();
 			if($consulta = $this->conexion->query($sql)){
 				while($consulta_vu = mysqli_fetch_assoc($consulta)) {
-						$arreglo["data"][] =$consulta_vu;
+						$arreglo[] =$consulta_vu;
 					
 				}
 				return $arreglo;
@@ -25,14 +25,13 @@ class Modelo_Categorias extends conexion{
 	
 	function cargar(){
 		$sql = "SELECT * FROM `categorias` WHERE `id` = '$this->id'";
-			$arreglo = array();
-			if($consulta = $this->conexion->query($sql)){
-				while($consulta_vu = mysqli_fetch_assoc($consulta)) {
-						$arreglo["data"][] =$consulta_vu;
-					
-				}
-				return $arreglo;
-				$this->conexion->cerrar();
+		$arreglo = array();
+		if($consulta = $this->conexion->query($sql)){
+			while($consulta_vu = mysqli_fetch_assoc($consulta)) {
+				$arreglo[] =$consulta_vu;				
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
 		}
 	}
 

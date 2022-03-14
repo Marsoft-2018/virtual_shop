@@ -1,48 +1,30 @@
 <?php
     include("../modelo/modelo_conexion.php");
     require("../modelo/modelo_categorias.php");
+    require("../modelo/modelo_secciones.php");
 
     $accion = "";
     if(isset($_REQUEST['accion'])){
         $accion = $_REQUEST['accion'];
     }
-    $id_seccion = 1;
+    
     switch ($accion){
         case "Listar":
-            $MP = new Modelo_Categorias();
-            $id_seccion = htmlspecialchars($_REQUEST['id_seccion'],ENT_QUOTES,'UTF-8');
+            $objCategoria = new Modelo_Categorias();
+            $objCategoria->idSeccion = htmlspecialchars($_REQUEST['idSeccion'],ENT_QUOTES,'UTF-8');
             
-            $consulta =$MP->listar_categorias($id_seccion);
-            if($consulta) {
-                echo json_encode($consulta);
-            } else {
-                echo '{
-                    "sEcho":1,
-                    "iTotalRecords":"0",
-                    "iTotalDisplayRecords":"0",
-                    "aaData":[]
-                }';
-            }
+            
+            include("../vista/categorias/lista.php");
             break;
 
-        case "Cargar":
-            $MP = new Modelo_Categorias();
-            $MP->id = htmlspecialchars($_REQUEST['id'],ENT_QUOTES,'UTF-8');
-            
-            $consulta =$MP->cargar();
-            if($consulta) {
-                echo json_encode($consulta);
-            } else {
-                echo '{
-                    "sEcho":1,
-                    "iTotalRecords":"0",
-                    "iTotalDisplayRecords":"0",
-                    "aaData":[]
-                }';
-            }
+        case "Mostrar":
+            $objSeccion = new Modelo_Secciones();
+            include("../vista/categorias/index.php");
             break;
-        
-        case "Editar";
-        
+        case "Nuevo": case "Editar":
+            $objCategoria = new Modelo_Categorias();
+            $objSeccion = new Modelo_Secciones();
+            include("../vista/categorias/formulario.php");
+        break;
 
     }

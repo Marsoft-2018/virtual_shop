@@ -1,31 +1,17 @@
 <?php 
 
 
-class Modelo_Secciones {
-	private $conexion;
-
-
-	function __construct()
-	{
-		require_once 'modelo_conexion.php';
-		$this->conexion = new conexion();
-		$this->conexion->conectar();
-	}
-
-
-
+class Modelo_Secciones extends conexion{
+	public $id;
+	public $nombre;
+	public $descripcion;
 	
-
-	 function listar_secciones() {
-	 		$sql = "SELECT     `id`    , `nombre`    , `descripcion`    , `estado`
-    			, `fecha_reg`
-				FROM
-   				 `secciones`;";
+	function listar() {
+	 		$sql = "SELECT `id`, `nombre`, `descripcion`, `estado`, `fecha_reg`	FROM `secciones`;";
 			$arreglo = array();
-			if($consulta = $this->conexion->conexion->query($sql)){
+			if($consulta = $this->conexion->query($sql)){
 				while($consulta_vu = mysqli_fetch_assoc($consulta)) {
-						$arreglo["data"][] =$consulta_vu;
-					
+					$arreglo[] =$consulta_vu;					
 				}
 				return $arreglo;
 				$this->conexion->cerrar();

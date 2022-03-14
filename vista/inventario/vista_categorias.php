@@ -71,31 +71,7 @@
               <h4 class="modal-title">Registro de Categorias </h4>
             </div>
             <div class="modal-body">
-            	<div class="row">
-
-                 <div class="col-lg-8">
-                    <label for=""><b>Seleccione una sección</b></label>
-                    <select class="js-example-basic-single" 
-                          name="state" style="width: 100%;" id="cmb_seccion_agregar">
-                            
-                             </select> <br> <br>
-                </div>
-
-            		 <div class="col-lg-12">
-
-	                  <label for=""><b>Categoria:</b></label>
-	                  <input type="text" id="txt_categoria" name="" class="form-control" placeholder="Nombre"><br>
-	              </div>
-
-                 <div class="col-lg-12">
-
-                    <label for=""><b>Descripcion:</b></label>
-                    <input type="text" id="txt_descripcion" name="" class="form-control" placeholder="Nombre"><br>
-                </div>
-
-
-            	</div>
-             
+            	            
             </div>
             <div class="modal-footer">
             <button class="btn btn-primary" onclick="Registrar_Categoria()">Registrar</button>
