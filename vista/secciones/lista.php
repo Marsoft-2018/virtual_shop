@@ -1,10 +1,10 @@
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Id</th>
             <th>Nombre</th>
             <th>Descripción</th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>

@@ -1,4 +1,4 @@
-<table>
+<table id="tbl_categorias" class="table  table-responsive">
     <thead>
         <tr>
             <th>Id</th>
@@ -16,13 +16,19 @@
                 <td><?php echo $value['nombre'] ?></td>
                 <td><?php echo $value['descripcion'] ?></td>
                 <td>
-                    <button class="btn btn-warning" onclick="editarCategoria('<?php echo $value['id'] ?>')">
+                    <button class="btn btn-warning"  data-toggle="modal" data-target="#ventana_modal" onclick="editarCategoria('<?php echo $value['id'] ?>')">
                         editar
                     </button> 
-                    <button class="btn btn-danger" onclick="eliminarCategoria('<?php echo $value['id'] ?>')"><i class="fa fa-trash"></i></button>   
+                    <button class="btn btn-danger"  onclick="eliminarCategoria('<?php echo $value['id'] ?>')"><i class="fa fa-trash"></i></button>   
                 </td>
             </tr>
             <?php
         }?>
     </tbody>
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#tbl_categorias').DataTable();
+} );
+</script>

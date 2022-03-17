@@ -1,5 +1,5 @@
 <?php
-    include("../modelo/modelo_conexion.php");
+    include("../modelo/Conexion.php");
    
     require("../modelo/modelo_secciones.php");
 

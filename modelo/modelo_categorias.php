@@ -2,7 +2,7 @@
 class Modelo_Categorias extends conexion{
 	public $id;	
 	public $idSeccion;
-	public $categoria;
+	public $nombre;
 	public $descripcion;
 
 	function listar() {
@@ -36,34 +36,40 @@ class Modelo_Categorias extends conexion{
 	}
 
 
- 	function	Registrar_Categoria($idSeccion,$categoria,$descripcion) {
- 		$sql = "INSERT INTO categorias(idSeccion,nombre,descripcion) VALUES('$idSeccion','$categoria','$descripcion')";
-		if ($consulta = $this->conexion->query($sql)) {
-			//$id_retornado = mysqli_insert_ind($this->conexion);
-			return 1;			
-		}else{
-			return 0;
-		}
+ 	function agregar() {
+ 		$sql = "INSERT INTO categorias(idSeccion,nombre,descripcion)VALUES ('".$this->idSeccion."', '".$this->nombre."','".$this->descripcion."')";
+
+ 		if($consulta = $this->conexion->query($sql)){
+			echo "Registro agregadocon éxito";
+			//$this->conexion->cerrar();
+			
+		} 		
  	}
 
- 	function Modificar_Categoria($id,$idSeccion, $categoria_actual,$categoria_nuevo,$descripcion_categoria) {
- 		$sql = "call  SP_MODIFICAR_CATEGORIA('$id','$idSeccion','$categoria_actual','$categoria_nuevo','$descripcion_categoria')";
-		if($consulta = $this->conexion->query($sql)){
-			if($row = mysqli_fetch_array($consulta)) {
-				return  $id =trim($row[0]);
-			}                
-			$this->conexion->cerrar();
-        }
+ 	function modificar() {
+ 		$sql = "UPDATE categorias SET idSeccion = '".$this->idSeccion."', nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
+ 		try {
+	 		if( $this->conexion->query($sql)){
+				echo "Registro modificado con éxito";
+				//$this->conexion->cerrar();
+				
+			}  			
+ 		} catch (Exception $e) {
+ 			echo "Error: ".$e;
+ 		}		
  	}
 
- 	function Modificar_Estatus_Categoria($id,$estatus) {
- 		$sql = "UPDATE categorias set estado = '$estatus' where id = '$id'";
-		if ($consulta = $this->conexion->query($sql)) {
-			//$id_retornado = mysqli_insert_ind($this->conexion->conexion);
-			return 1;			
-		}else{
-			return 0;
-		}
+ 	function eliminar() {
+ 		$sql = "DELETE FROM categorias  WHERE id = '".$this->id."'";
+ 		try {
+	 		if( $this->conexion->query($sql)){
+				echo "Registro modificado con éxito";
+				//$this->conexion->cerrar();
+				
+			}  			
+ 		} catch (Exception $e) {
+ 			echo "Error: ".$e;
+ 		}		
  	}
 }
 

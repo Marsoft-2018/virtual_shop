@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-8">
             <label for=""><b>Sección</b></label>
-            <select class="js-example-basic-single form form-control" name="state" style="width: 100%;" id="cmb_seccion_agregar">
+            <select class="js-example-basic-single" name="state" style="width: 100%;" id="seccion">
                 <option value="">Seleccione...</option>
                 <?php
                     foreach ($objSeccion->listar() as $value) {
@@ -40,5 +40,12 @@
             <input type="text" id="descripcion" value="<?php echo $descripcion; ?>" class="form-control" placeholder="Nombre"><br>
         </div>
     </div>
-    <button type="button" onclick="<?php echo $funcionBoton; ?>"></button>
+     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    <button type="button" onclick="<?php echo $funcionBoton; ?>" class="btn btn-primary">Guardar</button>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>
