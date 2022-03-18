@@ -1,5 +1,5 @@
 <?php
-    include("../modelo/Conexion.php");
+    include("../modelo/modelo_conexion.php");
    
     require("../modelo/modelo_secciones.php");
 
@@ -23,7 +23,29 @@
         case "Nuevo": case "Editar":
            
             $objSeccion = new Modelo_Secciones();
-            include("../vista/categorias/formulario.php");
+            include("../vista/secciones/formulario.php");
+        break;
+         case "Agregar":
+            $objSeccion = new Modelo_Secciones();
+           
+            $objSeccion->nombre = htmlspecialchars($_POST['nombre'],ENT_QUOTES,'UTF-8');
+            $objSeccion->descripcion = htmlspecialchars($_POST['descripcion'],ENT_QUOTES,'UTF-8');
+            $objSeccion->agregar();
+        break;
+
+         case "Modificar":
+              $objSeccion = new Modelo_Secciones();
+            $objSeccion->id = htmlspecialchars($_POST['id'],ENT_QUOTES,'UTF-8');
+            
+            $objSeccion->nombre = htmlspecialchars($_POST['nombre'],ENT_QUOTES,'UTF-8');
+            $objSeccion->descripcion = htmlspecialchars($_POST['descripcion'],ENT_QUOTES,'UTF-8');
+            $objSeccion->modificar();
+        break;
+
+          case "Eliminar":
+            $objSeccion = new Modelo_Secciones();
+            $objSeccion->id = htmlspecialchars($_POST['id'],ENT_QUOTES,'UTF-8');
+            $objSeccion->eliminar();
         break;
 
     }

@@ -13,11 +13,6 @@
 			$this->usuario = "root";
 			$this->contrasena = "";
 			$this->basedatos = "bdt_virtualshop";
-
-        }
-       
-
-		function conectar(){
 			$this->conexion = new mysqli($this->servidor,$this->usuario,$this->contrasena,$this->basedatos);
 			$this->conexion->set_charset("utf8");
         }

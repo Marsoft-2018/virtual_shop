@@ -18,60 +18,56 @@ class Modelo_Secciones extends conexion{
 			}
  		}
 
+ 		function agregar() {
+ 		$sql = "INSERT INTO secciones(nombre,descripcion)VALUES ( '".$this->nombre."','".$this->descripcion."')";
 
+ 		if($consulta = $this->conexion->query($sql)){
+			echo "Registro agregado con éxito";
+			//$this->conexion->cerrar();
+			
+		} 		
+ 	}
 
-
-
-
- 		function Registrar_Seccion($seccion,$descripcion) {
- 			$sql = "call  SP_REGISTRAR_SECCION('$seccion','$descripcion')";
-			if($consulta = $this->conexion->conexion->query($sql)){
-				if($row = mysqli_fetch_array($consulta)) {
-					return	$id =trim($row[0]);
-				}
-				 $arreglo;
-				$this->conexion->cerrar();
-			}
- 		}
-
-
- 		function Modificar_Estatus_Seccion($id,$estatus) {
-		$sql = "UPDATE secciones set 
-          estado = '$estatus' where id = '$id'";
-			if ($consulta = $this->conexion->conexion->query($sql)) {
-				//$id_retornado = mysqli_insert_ind($this->conexion->conexion);
-				return 1;
+ 		function modificar() {
+ 		$sql = "UPDATE secciones SET  = ' nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
+ 		try {
+	 		if( $this->conexion->query($sql)){
+				echo "Registro modificado con éxito";
+				//$this->conexion->cerrar();
 				
-			}else{
-				return 0;
-			}
-	}
+			}  			
+ 		} catch (Exception $e) {
+ 			echo "Error: ".$e;
+ 		}		
+ 	}
+
+ 		function eliminar() {
+ 		$sql = "DELETE FROM secciones  WHERE id = '".$this->id."'";
+ 		try {
+	 		if( $this->conexion->query($sql)){
+				echo "Registro modificado con éxito";
+				//$this->conexion->cerrar();
+				
+			}  			
+ 		} catch (Exception $e) {
+ 			echo "Error: ".$e;
+ 		}		
+ 	}
 
 
-	function Modificar_Seccion($id,$seccion_actual,$seccion_nuevo,$descripcion_seccion) {
-        $sql = "call  SP_MODIFICAR_SECCION('$id','$seccion_actual','$seccion_nuevo','$descripcion_seccion')";
-            if($consulta = $this->conexion->conexion->query($sql)){
-                if($row = mysqli_fetch_array($consulta)) {
-                    return  $id =trim($row[0]);
-                }
-                 $arreglo;
-                $this->conexion->cerrar();
-        }
-    }
 
-    function listar_combo_seccion() {
-    	$sql = "SELECT id, nombre
-				 FROM secciones
-				 WHERE estado = 1";
-			$arreglo = array();
-			if($consulta = $this->conexion->conexion->query($sql)){
-				while($consulta_vu = mysqli_fetch_array($consulta)) {
-						$arreglo[] =$consulta_vu;
-				}
-				return $arreglo;
-				$this->conexion->cerrar();
-			}
-    }
+
+
+
+ 		
+
+
+ 		
+
+
+	
+
+    
 
 
  	}

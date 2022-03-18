@@ -40,10 +40,12 @@ class Modelo_Categorias extends conexion{
  		$sql = "INSERT INTO categorias(idSeccion,nombre,descripcion)VALUES ('".$this->idSeccion."', '".$this->nombre."','".$this->descripcion."')";
 
  		if($consulta = $this->conexion->query($sql)){
-			echo "Registro agregadocon éxito";
+			echo "Registro agregado con éxito";
 			//$this->conexion->cerrar();
 			
-		} 		
+		} else {
+				echo "Registro no agregado";
+		}		
  	}
 
  	function modificar() {
