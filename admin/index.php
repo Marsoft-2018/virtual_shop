@@ -260,6 +260,13 @@
                   <p>Secciones</p>
                 </a>
               </li>
+
+               <li class="nav-item">
+                <a href="#" class="nav-link" onclick="mostrarUnidades()">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Unidades</p>
+                </a>
+              </li>
             </ul>
           </li>
          
@@ -370,5 +377,6 @@
 <script src="../js/categorias.js"></script>
 <script src="../js/secciones.js"></script>
 <script src="../js/rol.js"></script>
+<script src="../js/unidades.js"></script>
 </body>
 </html>
