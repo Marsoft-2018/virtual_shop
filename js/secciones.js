@@ -42,6 +42,20 @@ function nuevaSeccion(){
     })
 }
 
+function editarSeccion(id){
+    $.ajax({
+        type: "POST",
+        url:"../controlador/ctrlSecciones.php",
+        data:{accion:"Editar",id:id},
+        success:function(response){
+            $("#contenido_modal").html(response);
+        },
+        error: function(err){
+            console.log("El error es: "+err);
+        }
+    })
+}
+
 
 function agregarSeccion(){
    // alert('ok');
@@ -77,8 +91,6 @@ function nuevaSeccion(){
 }
 
 function modificarSeccion(id){
-    alert('ok');
- 
     var nombre = $("#nombre").val();
     var descripcion = $("#descripcion").val();
     $.ajax({

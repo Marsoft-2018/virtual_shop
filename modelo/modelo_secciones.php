@@ -27,9 +27,21 @@ class Modelo_Secciones extends conexion{
 			
 		} 		
  	}
-
- 		function modificar() {
- 		$sql = "UPDATE secciones SET  = ' nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
+	 
+	function cargar(){
+		$sql = "SELECT * FROM `secciones` WHERE `id` = '$this->id'";
+		$arreglo = array();
+		if($consulta = $this->conexion->query($sql)){
+			while($consulta_vu = mysqli_fetch_assoc($consulta)) {
+				$arreglo[] =$consulta_vu;				
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
+		}
+	}
+ 		
+	function modificar() {
+ 		$sql = "UPDATE secciones SET  nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
  		try {
 	 		if( $this->conexion->query($sql)){
 				echo "Registro modificado con éxito";
