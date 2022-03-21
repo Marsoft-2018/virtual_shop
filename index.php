@@ -1,3 +1,9 @@
+<?php
+    require("modelo/modelo_conexion.php");
+    include("modelo/modelo_secciones.php");
+    include("modelo/modelo_categorias.php");
+    require("modelo/modelo_producto.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <!-- Basic -->
@@ -164,16 +170,23 @@
     <div class="categories-shop">
         <div class="container">
             <div class="row">
+                <?php
+                $objProductos = new Modelo_Productos();
+                foreach ($objProductos->listar() as $producto) { ?>
+                    
+                
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/t-shirts-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">T-shirts</a>
+                        <img class="img-fluid" src="images/<?php echo $producto['imagen'] ?>" alt="" />
+                        <a class="btn hvr-hover" href="#"><?php echo $producto['nombre'] ?></a>
                     </div>
                     <div class="shop-cat-box">
                         <img class="img-fluid" src="images/shirt-img.jpg" alt="" />
                         <a class="btn hvr-hover" href="#">Shirt</a>
                     </div>
                 </div>
+                <?php }
+                ?>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
                         <img class="img-fluid" src="images/wallet-img.jpg" alt="" />
@@ -182,16 +195,6 @@
                     <div class="shop-cat-box">
                         <img class="img-fluid" src="images/women-bag-img.jpg" alt="" />
                         <a class="btn hvr-hover" href="#">Bags</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/shoes-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Shoes</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/women-shoes-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Women Shoes</a>
                     </div>
                 </div>
             </div>
@@ -206,7 +209,7 @@
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>Featured Products</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                        <p>Solopara saber donde está esto</p>
                     </div>
                 </div>
             </div>
