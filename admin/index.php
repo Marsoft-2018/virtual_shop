@@ -219,7 +219,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="#" class="nav-link active" onclick="mostrarProductos()">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inventario</p>
                 </a>
@@ -941,5 +941,6 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <script src="../js/categorias.js"></script>
 <script src="../js/secciones.js"></script>
+<script src="../js/productos.js"></script>
 </body>
 </html>
