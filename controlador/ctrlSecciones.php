@@ -3,9 +3,9 @@
    
     require("../modelo/modelo_secciones.php");
 
-   $accion = "";
-    if(isset($_POST['accion'])){
-        $accion = $_POST['accion'];
+    $accion = "";
+    if(isset($_REQUEST['accion'])){
+        $accion = $_REQUEST['accion'];
     }
     
     switch ($accion){

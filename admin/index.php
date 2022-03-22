@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,7 +26,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -215,34 +215,40 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Acceso
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Acceso</p>
-                </a>
-              </li>
-             
               <li class="nav-item">
                 <a href="#" class="nav-link" onclick="mostrarRoles()">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Perfiles</p>
                 </a>
               </li>
+             
               <li class="nav-item">
-                <a href="#" class="nav-link" onclick="mostrarSecciones()">
+                <a href="#" class="nav-link" onclick="mostrarUsuarios()">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
               </li>
+             
+              
             </ul>
+          </li>
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Almacén
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="#" class="nav-link active" onclick="mostrarProductos()">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inventario</p>
                 </a>
@@ -260,7 +266,6 @@
                   <p>Secciones</p>
                 </a>
               </li>
-
                <li class="nav-item">
                 <a href="#" class="nav-link" onclick="mostrarUnidades()">
                   <i class="far fa-circle nav-icon"></i>
@@ -269,8 +274,31 @@
               </li>
             </ul>
           </li>
+
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Ingresos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" onclick="mostrarProveedores()">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proveedores</p>
+                </a>
+              </li>
+             
+            
+             
+              
+            </ul>
+          </li>
+
          
-        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -298,7 +326,6 @@
     </div>
     <!-- /.content-header -->
 
-
     <!-- Main content -->
     <section class="content" id="contenido_principal">
 
@@ -309,7 +336,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" id="titulo_modal">Registro de Módulo </h4>
+              <h4 class="modal-title" id="titulo_modal">Registro de Categorias </h4>
             </div>
             <div class="modal-body" id="contenido_modal">
             	            
@@ -319,11 +346,9 @@
         </div>
     </div>
   </div>
-</div>
-</div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href=""></a>.</strong>
+    <strong>Copyright &copy; 2022<a href="">GRUPO SOFTLUTEC</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
@@ -370,13 +395,18 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<script type="text/javascript" src="plugins/datatables/datatables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<script type="text/javascript" src="plugins/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="plugins/select2/js/select2.min.js"></script>
 <script src="../js/categorias.js"></script>
 <script src="../js/secciones.js"></script>
-<script src="../js/rol.js"></script>
 <script src="../js/unidades.js"></script>
+<script src="../js/rol.js"></script>
+
+<script src="../js/productos.js"></script>
+<script src="../js/proveedores.js"></script>
+
 </body>
 </html>

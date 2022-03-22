@@ -16,7 +16,7 @@
                 <td><?php echo $value['nombre'] ?></td>
                 <td><?php echo $value['descripcion'] ?></td>
                 <td>
-                    <button class="btn btn-warning" onclick="editarSeccion('<?php echo $value['id'] ?>')">
+                    <button class="btn btn-warning"  data-toggle="modal" data-target="#ventana_modal"  onclick="editarSeccion('<?php echo $value['id'] ?>')">
                         editar
                     </button> 
                     <button class="btn btn-danger" onclick="eliminarSeccion('<?php echo $value['id'] ?>')"><i class="fa fa-trash"></i></button>   

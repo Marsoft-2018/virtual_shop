@@ -28,11 +28,12 @@ function mostrarSecciones(){
     }); 
 }
 
-function nuevaSeccion(){
+
+function editarSeccion(id){
     $.ajax({
         type: "POST",
         url:"../controlador/ctrlSecciones.php",
-        data:{accion:"Nuevo"},
+        data:{accion:"Editar",id:id},
         success:function(response){
             $("#contenido_modal").html(response);
         },
@@ -62,11 +63,11 @@ function agregarSeccion(){
     }); 
 }
 
-function editarSeccion(id){
+function nuevaSeccion(){
     $.ajax({
         type: "POST",
         url:"../controlador/ctrlSecciones.php",
-        data:{accion:"Editar",id:id},
+        data:{accion:"Nuevo"},
         success:function(response){
             $("#contenido_modal").html(response);
         },
@@ -77,8 +78,6 @@ function editarSeccion(id){
 }
 
 function modificarSeccion(id){
-    alert('ok');
- 
     var nombre = $("#nombre").val();
     var descripcion = $("#descripcion").val();
     $.ajax({

@@ -18,7 +18,17 @@ class Modelo_Secciones extends conexion{
 			}
  		}
 
- 	function cargar(){
+ 		function agregar() {
+ 		$sql = "INSERT INTO secciones(nombre,descripcion)VALUES ( '".$this->nombre."','".$this->descripcion."')";
+
+ 		if($consulta = $this->conexion->query($sql)){
+			echo "Registro agregado con éxito";
+			//$this->conexion->cerrar();
+			
+		} 		
+ 	}
+	 
+	function cargar(){
 		$sql = "SELECT * FROM `secciones` WHERE `id` = '$this->id'";
 		$arreglo = array();
 		if($consulta = $this->conexion->query($sql)){
@@ -29,19 +39,9 @@ class Modelo_Secciones extends conexion{
 			$this->conexion->cerrar();
 		}
 	}
-
- 		function agregar() {
- 		$sql = "INSERT INTO secciones(nombre,descripcion)VALUES ( '".$this->nombre."','".$this->descripcion."')";
-
- 		if($consulta = $this->conexion->query($sql)){
-			echo "Registro agregado con éxito";
-			//$this->conexion->cerrar();
-			
-		} 		
- 	}
-
- 		function modificar() {
- 		$sql = "UPDATE secciones SET  = 'nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
+ 		
+	function modificar() {
+ 		$sql = "UPDATE secciones SET  nombre = '".$this->nombre."', descripcion = '".$this->descripcion."' WHERE id = '".$this->id."'";
  		try {
 	 		if( $this->conexion->query($sql)){
 				echo "Registro modificado con éxito";
