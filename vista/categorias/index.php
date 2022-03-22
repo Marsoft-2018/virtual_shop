@@ -2,7 +2,7 @@
     <div>
         <form action="" onsubmit="return listar_categorias()">
             <label for="">Sección</label>
-            <select name="" id="cmb_seccion">
+            <select name="" id="cmb_seccion" class="js-example-basic-single">
                 <option value="">Seleccione..</option>
                 <?php
                 foreach ($objSeccion->listar() as $value) {
@@ -16,3 +16,9 @@
     </div>
     <div id="listaCategorias"></div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+     $('.js-example-basic-single').select2();
+});
+</script>

@@ -54,3 +54,8 @@
         }?>
     </tbody>
 </table>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#tbl_productos').DataTable();
+} );
+</script>
