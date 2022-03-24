@@ -27,3 +27,18 @@ function mostrarProductos(){
         }
     }); 
 }
+
+
+function nuevoProducto(){
+    $.ajax({
+        type: "POST",
+        url:"../controlador/ctrlProductos.php",
+        data:{accion:"Nuevo"},
+        success:function(response){
+            $("#contenido_modal").html(response);
+        },
+        error: function(err){
+            console.log("El error es: "+err);
+        }
+    })
+}

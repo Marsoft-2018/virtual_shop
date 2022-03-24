@@ -2,6 +2,8 @@
 
 include("../modelo/modelo_conexion.php");
 require("../modelo/modelo_producto.php");
+require("../modelo/modelo_categorias.php");
+require("../modelo/modelo_unidades.php");
 $accion = "";
 if(isset($_POST['accion'])){
     $accion = $_POST['accion'];
@@ -23,6 +25,8 @@ switch ($accion){
 
     case "Nuevo": case "Editar":
         $objProductos = new Modelo_Productos();
+        $objCategoria = new Modelo_Categorias();
+        $objUnidades = new Modelo_Unidades();
        // $objSeccion = new Modelo_Secciones();
         include("../vista/productos/formulario.php");        
     break;

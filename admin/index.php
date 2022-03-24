@@ -238,6 +238,26 @@
             </ul>
           </li>
 
+              <li class="nav-item ">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Configuración
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" onclick="mostrarContinentes()">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Continentes</p>
+                </a>
+              </li>
+            
+              
+            </ul>
+          </li>
+
           <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -291,9 +311,7 @@
                   <p>Proveedores</p>
                 </a>
               </li>
-             
             
-             
               
             </ul>
           </li>
@@ -332,11 +350,11 @@
     </section>
     <!-- /.content -->
     <div class="modal fade" id="ventana_modal" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" id="titulo_modal">Registro de Categorias </h4>
+              <h4 class="modal-title" id="titulo_modal">Registro de Modulos </h4>
             </div>
             <div class="modal-body" id="contenido_modal">
             	            
@@ -402,5 +420,12 @@
 <script type="text/javascript" src="plugins/select2/js/select2.min.js"></script>
 <script src="../js/categorias.js"></script>
 <script src="../js/secciones.js"></script>
+<script src="../js/unidades.js"></script>
+<script src="../js/rol.js"></script>
+
+<script src="../js/productos.js"></script>
+<script src="../js/proveedores.js"></script>
+<script src="../js/continentes.js"></script>
+
 </body>
 </html>
