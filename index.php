@@ -166,7 +166,7 @@
     </div>
     <!-- End Slider -->
 
-    <!-- Start Categories  -->
+    <!-- Start Categories 
     <div class="categories-shop">
         <div class="container">
             <div class="row">
@@ -183,20 +183,10 @@
                 </div>
                 <?php }
                 ?>
-                <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/wallet-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Wallet</a>
-                    </div>
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/women-bag-img.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Bags</a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
-    <!-- End Categories -->
+    End Categories -->
 
     <!-- Start Products  -->
     <div class="products-box">
@@ -204,8 +194,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>Productos Destacados</h1>
-                        <p>Solopara saber donde está esto</p>
+                        <h1>NUESTROS PRODUCTOS</h1>
+                        <!--<p>Solopara saber donde está esto</p>-->
                     </div>
                 </div>
             </div>
@@ -231,16 +221,16 @@
                 </div>
             </div>
 
-            <div class="row special-list">
+            <div class="row special-list"  id="lista-productos">
             <?php
                 $objProductos = new Modelo_Productos();
                 foreach ($objProductos->listar() as $producto) { ?>
-                <div class="col-lg-3 col-md-6 special-grid <?php echo $producto['categoria'] ?>">
-                    <div class="products-single fix">
+                <div class="col-lg-3 col-md-6 special-grid <?php echo $producto['categoria'] ?> ">
+                    <div class="products-single fix ">
                         <div class="box-img-hover">
-                            <div class="type-lb">
+                            <!--<div class="type-lb">
                                 <p class="sale">Vendido</p>
-                            </div>
+                            </div>-->
                             <img src="images/<?php echo $producto['imagen'] ?>" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
@@ -248,40 +238,17 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Agregar al carrito</a>
+                                <a class="cart agregar-carrito" href="" data-id="<?php echo $producto['id'] ?>">Agregar al carrito</a>
                             </div>
                         </div>
                         <div class="why-text">
-                            <h3><?php echo $producto['nombre'] ?></h3>
-                            <h4><?php echo $producto['descripcion'] ?></h4>
-                            <h5> $ <?php echo $producto['precioVenta'] ?></h5>
+                            <h3 class="nombre"><?php echo $producto['nombre'] ?></h3>
+                            <h4 class="descripcion"><?php echo $producto['descripcion'] ?></h4>
+                            <h5 class="precio"> $ <span><?php echo $producto['precioVenta'] ?></span></h5>
                         </div>
                     </div>
                 </div>
                 <?php } ?>
-
-                <!-- <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="new">New</p>
-                            </div>
-                            <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $9.79</h5>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -468,6 +435,8 @@
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/carrito_de_compras.js"></script>
+    <script src="js/pedido.js"></script>
 </body>
 
 </html>

@@ -70,8 +70,8 @@
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href="#">
-						<i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
+						<i class="fa fa-shopping-cart"></i>
+                            <span class="badge" id="cant-carrito">0</span>
 					</a></li>
                     </ul>
                 </div>
@@ -80,9 +80,9 @@
             <!-- Start Side Menu -->
             <div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
+                <li class="cart-box"  id="carrito">
+                    <ul class="cart-list" id="carro-lista">
+                        <!--<li>
                             <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Delica omtantur </a></h6>
                             <p>1x - <span class="price">$80.00</span></p>
@@ -96,10 +96,10 @@
                             <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+                        </li>-->
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VER COMPRA</a>
+                            <span class="float-right"><strong>Total</strong>: $0.00</span>
                         </li>
                     </ul>
                 </li>
