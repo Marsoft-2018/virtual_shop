@@ -225,7 +225,7 @@
             <?php
                 $objProductos = new Modelo_Productos();
                 foreach ($objProductos->listar() as $producto) { ?>
-                <div class="col-lg-3 col-md-6 special-grid <?php echo $producto['categoria'] ?> ">
+                <div class="col-lg-3 col-md-6 special-grid <?php echo $producto['categoria'] ?> contenedor-producto">
                     <div class="products-single fix ">
                         <div class="box-img-hover">
                             <!--<div class="type-lb">
@@ -240,11 +240,11 @@
                                 </ul>
                                 <a class="cart agregar-carrito" href="" data-id="<?php echo $producto['id'] ?>">Agregar al carrito</a>
                             </div>
-                        </div>
-                        <div class="why-text">
-                            <h3 class="nombre"><?php echo $producto['nombre'] ?></h3>
-                            <h4 class="descripcion"><?php echo $producto['descripcion'] ?></h4>
-                            <h5 class="precio"> $ <span><?php echo $producto['precioVenta'] ?></span></h5>
+                            <div class="why-text">
+                                <h3 class="nombre"><?php echo $producto['nombre'] ?></h3>
+                                <h4 class="descripcion"><?php echo $producto['descripcion'] ?></h4>
+                                <h5 class="precio"> $ <span><?php echo $producto['precioVenta'] ?></span></h5>
+                            </div>
                         </div>
                     </div>
                 </div>

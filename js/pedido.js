@@ -10,8 +10,12 @@ cargarEventos();
 function cargarEventos(){
 
     //Se ejecuta cuando se presionar agregar carrito
-    productos.addEventListener('click', (e)=>{carro.comprarProducto(e)});
-/*
+    productos.addEventListener('click', (e)=>{
+        //e.preventDefault();
+        //alert("Se dió click en el contenedor de los productos: "+e.target);
+        carro.agregarProducto(e)
+    });
+
     //Cuando se elimina productos del carrito
     carrito.addEventListener('click', (e)=>{carro.eliminarProducto(e)});
 
@@ -22,5 +26,5 @@ function cargarEventos(){
     document.addEventListener('DOMContentLoaded', carro.leerLocalStorage());
 
     //Enviar pedido a otra pagina
-    procesarPedidoBtn.addEventListener('click', (e)=>{carro.procesarPedido(e)});*/
+    procesarPedidoBtn.addEventListener('click', (e)=>{carro.procesarPedido(e)});/**/
 }
