@@ -34,7 +34,7 @@ class Carrito {
         if(productosLS === infoProducto.id){
             Swal.fire({
                 type: 'info',
-                title: 'Oops...',
+                title: 'Advertencia...',
                 text: 'El producto ya está agregado',
                 showConfirmButton: false,
                 timer: 1000
@@ -70,7 +70,7 @@ class Carrito {
             productoID = producto.querySelector('a').getAttribute('data-id');
         }
         this.eliminarProductoLocalStorage(productoID);
-        this.calcularTotal();
+        //this.calcularTotal();
 
     }
 
@@ -112,6 +112,7 @@ class Carrito {
 
     //Mostrar los productos guardados en el LS
     leerLocalStorage(){
+        let conteo_productos = 0;
         let productosLS;
         productosLS = this.obtenerProductosLocalStorage();
         productosLS.forEach(function (producto){
@@ -124,8 +125,9 @@ class Carrito {
                 <p>1x - $<span class="price">${producto.precio}</span></p>                           
             `;
             listaProductos.appendChild(row);
+            conteo_productos++;
         });
-        alert("Se leyó el local storage");
+        document.getElementById("cant-carrito").innerHTML = conteo_productos;
     }
 
     //Mostrar los productos guardados en el LS en compra.html
@@ -146,6 +148,7 @@ class Carrito {
 
     //Eliminar producto por ID del LS
     eliminarProductoLocalStorage(productoID){
+        let cantidad_carrito = document.getElementById("cant-carrito").innerHTML;
         let productosLS;
         //Obtenemos el arreglo de productos
         productosLS = this.obtenerProductosLocalStorage();
@@ -153,6 +156,7 @@ class Carrito {
         productosLS.forEach(function(productoLS, index){
             if(productoLS.id === productoID){
                 productosLS.splice(index, 1);
+                cantidad_carrito--;
             }
         });
 

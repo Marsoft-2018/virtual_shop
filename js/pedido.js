@@ -2,8 +2,8 @@ const carro = new Carrito();
 const carrito = document.getElementById('carrito');
 const productos = document.getElementById('lista-productos');
 const listaProductos = document.querySelector('#carro-lista');
-//const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
-//const procesarPedidoBtn = document.getElementById('procesar-pedido');
+const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+const procesarPedidoBtn = document.getElementById('procesar-pedido');
 
 cargarEventos();
 
