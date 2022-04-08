@@ -38,14 +38,8 @@
             }
         }
 
-
-
-
-
-
-
         function agregar() {
-            
+            var_dump($_REQUEST);
         }
     }
 

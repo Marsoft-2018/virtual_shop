@@ -53,7 +53,7 @@ class Carrito {
             <a href="#" class="photo"><img  src="${producto.imagen}" class="cart-thumb" alt="" /></a>
             <h6><a href="#">${producto.nombre}</a></h6>
             <p>1x - $<span class="price">${producto.precio}</span></p>
-           <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}"></a>               
+            <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}"></a>               
         `;
         listaProductos.appendChild(row);
         this.guardarProductosLocalStorage(producto);
@@ -65,7 +65,7 @@ class Carrito {
         e.preventDefault();
         let producto, productoID;
         if(e.target.classList.contains('borrar-producto')){
-            e.target.parentElement.parentElement.remove();
+            e.target.parentElement.remove();
             producto = e.target.parentElement.parentElement;
             productoID = producto.querySelector('a').getAttribute('data-id');
         }

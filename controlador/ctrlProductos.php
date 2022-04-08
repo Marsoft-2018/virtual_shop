@@ -3,6 +3,7 @@
 include("../modelo/modelo_conexion.php");
 require("../modelo/modelo_producto.php");
 require("../modelo/modelo_categorias.php");
+require("../modelo/modelo_secciones.php");
 require("../modelo/modelo_unidades.php");
 $accion = "";
 if(isset($_POST['accion'])){

@@ -1,7 +1,7 @@
 <?php
     $nombre = "";
     $descripcion = "";
-   
+    $referencia = "";
     $id = "";
     $funcionBoton = "agregarProducto()";
     if(isset($_REQUEST['id'])){
@@ -29,6 +29,7 @@
     }
 ?>
 <div>
+    <form  enctype="multipart/form-data" method='post' id="formProductos" onsubmit="return <?php echo $funcionBoton?>">
     <h3>Formulario para Productos</h3>
     <div class="row">
     <div class="col-lg-6">
@@ -79,26 +80,36 @@
             <label for=""><b>Cantidad Minima:</b></label>
             <input type="number" id="cantidadMinima" value="<?php echo $cantidadMinima; ?>" class="form-control" placeholder="Nombre"><br>
         </div>
-        <div class="col-lg-6">
-            <label for=""><b>Categoria</b></label>
-            <select class="js-example-basic-single"
-             name="state" style="width: 100%;" id="categoria">
+        <div class="col-lg-4">
+            <label for=""><b>Sección</b></label>
+            <select class="form form-control js-example-basic-single"
+             name="state" style="width: 100%;" id="seccion" onchange="cargarCategorias(this.value)">
                 <option value="">Seleccione...</option>
                 <?php
-                    foreach ($objCategoria->listar() as $value) {
+                    $objSecciones = new Modelo_Secciones();
+                    foreach ($objSecciones->listar() as $seccion) {
                         $sel = "";
-                        if($idCategoria == $value['id'] ){ $sel = "selected"; }
+                        if($idSeccion == $seccion['id'] ){ $sel = "selected"; }
                         ?>
-                        <option value="<?php echo $value['id']; ?>" <?php echo $sel ?>><?php echo $value['nombre'] ?></option>
+                        <option value="<?php echo $seccion['id']; ?>" <?php echo $sel ?>><?php echo $seccion['nombre'] ?></option>
                     <?php } ?>   
             </select>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
+            <label for=""><b>Categoria</b></label>
+            <select class="form form-control js-example-basic-single"
+             name="state" style="width: 100%;" id="categoria">
+                <option value="">Seleccione...</option>
+                  
+            </select>
+        </div>
+        <div class="col-lg-4">
             <label for=""><b>Medida</b></label>
-            <select class="js-example-basic-single"
+            <select class="form form-control js-example-basic-single"
              name="state" style="width: 100%;" id="medida">
                 <option value="">Seleccione...</option>
                 <?php
+                    $objMedida = new Modelo_Unidades();
                     foreach ($objMedida->listar() as $value) {
                         $sel = "";
                         if($idMedida == $value['id'] ){ $sel = "selected"; }
@@ -115,7 +126,8 @@
         
     </div>
      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-    <button type="button" onclick="<?php echo $funcionBoton; ?>" class="btn btn-primary">Guardar</button>
+    <button type="submit"  class="btn btn-primary">Guardar</button>
+    </form>
 </div>
 
 <script type="text/javascript">

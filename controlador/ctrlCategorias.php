@@ -16,6 +16,11 @@
             
             include("../vista/categorias/lista.php");
             break;
+        case "listarDatos":
+            $objCategoria = new Modelo_Categorias();
+            $objCategoria->idSeccion = htmlspecialchars($_POST['idSeccion'],ENT_QUOTES,'UTF-8');
+            echo json_encode($objCategoria->listar());
+            break;
 
         case "Mostrar":
             $objSeccion = new Modelo_Secciones();
