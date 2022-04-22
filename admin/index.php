@@ -426,6 +426,7 @@
 <script src="../js/productos.js"></script>
 <script src="../js/proveedores.js"></script>
 <script src="../js/continentes.js"></script>
+<script src="../js/main.js"></script>
 
 </body>
 </html>

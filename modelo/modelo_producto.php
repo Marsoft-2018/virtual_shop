@@ -1,6 +1,25 @@
 <?php
     class Modelo_Productos extends conexion {
-        //private $conexion;
+        public $id;
+        public $nombre;
+        public $referencia;
+        public $descripcion;
+        public $precioCompra;
+        public $precioVenta;
+        public $cantidadInicial;
+        public $compras;
+        public $ventas;
+        public $devoluciones;
+        public $existencias;
+        public $cantidadMinima;
+        public $IdNegocio;
+        public $idCategoria;
+        public $idUnidad;
+        public $imagen;
+        public $estado;
+        public $fecha_reg;
+        private $sql;
+        private $datos;
         
         function listar() {
             $sql = "SELECT p.id,p.nombre,p.referencia,p.descripcion,
@@ -39,9 +58,28 @@
         }
 
         function agregar() {
-            var_dump($_REQUEST);
+            $this->sql = "INSERT INTO productos(IdNegocio,id, nombre, referencia, descripcion, precioCompra, precioVenta, cantidadInicial, cantidadMinima, idCategoria, idUnidad, imagen) VALUES('1','".$this->id."', '".$this->nombre."', '".$this->referencia."', '".$this->descripcion."', '".$this->precioCompra."', '".$this->precioVenta."', '".$this->cantidadInicial."', '".$this->cantidadMinima."', '".$this->idCategoria."', '".$this->idUnidad."', '".$this->imagen."')";
+            if($consulta = $this->conexion->query($this->sql)){
+                echo "Registro agregado con éxito";
+                //$this->conexion->cerrar();
+                
+            } else {
+                    echo "Registro no agregado";
+            } 
+            //     $stmt = $this->conexion->prepare($this->sql);
+            //     $stmt->bind_param($this->id, $this->nombre, $this->referencia, $this->descripcion, $this->precioCompra, $this->precioVenta, $this->cantidadInicial, $this->cantidadMinima, $this->idCategoria, $this->idUnidad, $this->imagen);
+
+            //     $stmt->execute();
+            //     if($stmt->execute()){
+            //         echo "Registro agregado con éxito";
+            //         printf("%d Fila insertada.\n", $stmt->affected_rows);                
+            //     } else {
+            //         printf("Error: %s.\n", mysqli_stmt_error($th));
+            //         echo "Registro no agregado";
+            //     }
+             
+            // $stmt->close();
         }
     }
-
+       
 ?>
-

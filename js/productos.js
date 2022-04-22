@@ -64,32 +64,34 @@ function cargarCategorias(idSeccion){
 }
 
 function agregarProducto(){
-    var imagen = $('#imagen').prop('files')[0];          
-    var formData = new FormData();
-    formData.append('accion','Agregar');
-    formData.append('imagen',imagen);
-    formData.append('id',$("#id").val());
-    formData.append('nombre',$("#nombre").val());    
-    formData.append('referencia',$("#referencia").val());
-    formData.append('descripcion',$("#descripcion").val());
-    formData.append('precioCompra',$("#precioCompra").val());
-    formData.append('precioVenta',$("#precioVenta").val());
-    formData.append('cantidadMinima',$("#cantidadMinima").val());
-    formData.append('categoria',$("#categoria").val());
-    formData.append('medida',$("#medida").val());
+    var imagen = $('#imagen').prop('files')[0];  
+	var accion = "Agregar";
+            
+    var formulario = new FormData();    
+    formulario.append('id', $('#id').val() );
+    formulario.append('imagen',imagen);
+    formulario.append('nombre',$("#nombre").val());    
+    formulario.append('referencia',$("#referencia").val());
+    formulario.append('descripcion',$("#descripcion").val());
+    formulario.append('precioCompra',$("#precioCompra").val());
+    formulario.append('precioVenta',$("#precioVenta").val());
+    formulario.append('cantidadMinima',$("#cantidadMinima").val());
+    formulario.append('categoria',$("#categoria").val());
+    formulario.append('medida',$("#medida").val());
 
     $.ajax({
-        type: "POST",
-        url:"../controlador/ctrlProductos.php",
-        data: formData,
-        success: function(response){
-            console.log("respose: "+response);
-            return false;
+        type: 'POST',
+        url: "../controlador/ctrlProductos.php?accion="+accion,
+        data:  formulario,                        
+        processData:false,
+        cache:false,
+        contentType: false,
+        success: function(data){                
+            //$("#datosProductos").html(data);
+            console.log("respose: "+data);
         },
-        error: function(err){
-            console.log("El error es: "+err);
-            return false;
+        error: function(data){
+            console.log('Error: '+data);
         }
-    });
-
+    }); 
 }

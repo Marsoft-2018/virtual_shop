@@ -28,8 +28,7 @@
         }
     }
 ?>
-<div>
-    <form  enctype="multipart/form-data" method='post' id="formProductos" onsubmit="return <?php echo $funcionBoton?>">
+<div>    
     <h3>Formulario para Productos</h3>
     <div class="row">
     <div class="col-lg-6">
@@ -120,14 +119,15 @@
         </div>
         <div class="col-lg-6">
             <label for=""><b>Imagen:</b></label>
-            <input type="file" id="imagen" value="<?php echo $imagen; ?>" class="form-control" placeholder="Nombre"><br>
+            <img src="" alt="" class="previsualizar img-fluid">
+            <input type="file" id="imagen" value="<?php echo $imagen; ?>" class="form-control" onchange="previsualizar(this)" placeholder="Nombre"><br>
         </div>
 
         
     </div>
      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-    <button type="submit"  class="btn btn-primary">Guardar</button>
-    </form>
+     <button type="button"  class="btn btn-primary" onclick="<?php echo $funcionBoton?>">Guardar</button>
+    
 </div>
 
 <script type="text/javascript">

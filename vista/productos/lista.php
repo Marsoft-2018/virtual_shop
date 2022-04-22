@@ -40,7 +40,7 @@
                 <td><?php echo $value['cantidadMinima'] ?></td>
                 <td><?php echo $value['categoria'] ?></td>
                 <td><?php echo $value['unidad'] ?></td>
-                <td><img src="../images/<?php  echo $value['imagen']?>" class="img-circle" ></td>
+                <td><img src="../images/productos/<?php  echo $value['imagen']?>" class="img-circle" ></td>
                 <td><?php     echo $value['estado'] ?></td>
                 <td><?php echo $value['fecha_reg'] ?></td>
                 <td>

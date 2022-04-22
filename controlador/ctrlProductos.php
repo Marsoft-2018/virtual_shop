@@ -6,8 +6,8 @@ require("../modelo/modelo_categorias.php");
 require("../modelo/modelo_secciones.php");
 require("../modelo/modelo_unidades.php");
 $accion = "";
-if(isset($_POST['accion'])){
-    $accion = $_POST['accion'];
+if(isset($_REQUEST['accion'])){
+    $accion = $_REQUEST['accion'];
 }
 
 switch ($accion){
@@ -33,10 +33,36 @@ switch ($accion){
     break;
 
     case "Agregar":
-        $objProductos = new Modelo_Productos();
-        $objProductos->idSeccion = htmlspecialchars($_POST['idSeccion'],ENT_QUOTES,'UTF-8');
-        $objProductos->nombre = htmlspecialchars($_POST['nombre'],ENT_QUOTES,'UTF-8');
-        $objProductos->descripcion = htmlspecialchars($_POST['descripcion'],ENT_QUOTES,'UTF-8');
+        $objProductos = new Modelo_Productos();   
+        
+        if(isset($_FILES['imagen'])){
+            $archivo = $_FILES['imagen'];
+            $nombreIMG  = $archivo["name"];
+            $tipo       = $archivo["type"];
+            $nombreTemp = $archivo["tmp_name"];
+            $tamanho    = $archivo["size"];
+            $destino    = "../images/productos/";
+
+            @unlink($destino.$nombreIMG);
+            $resultado = @move_uploaded_file($nombreTemp, $destino.$nombreIMG);
+            if ($resultado){
+                $objProductos->imagen = $nombreIMG;                
+            } else {
+                $objProductos->imagen = "default.png"; 
+            }
+        }else{
+           $objProductos->imagen = "default.png"; 
+        }
+        $objProductos->id                =  $_POST['id'];
+        $objProductos->nombre            =  $_POST['nombre'];
+        $objProductos->referencia        =  $_POST['referencia'];
+        $objProductos->descripcion       =  $_POST['descripcion'];
+        $objProductos->precioCompra      =  $_POST['precioCompra'];
+        $objProductos->precioVenta       =  $_POST['precioVenta'];
+        //$objProductos->cantidadInicial =  $_POST['cantidadInicial'];
+        $objProductos->cantidadMinima    =  $_POST['cantidadMinima'];
+        $objProductos->idCategoria       =  $_POST['categoria'];
+        $objProductos->idUnidad          =  $_POST['medida'];
         $objProductos->agregar();
     break;
 
