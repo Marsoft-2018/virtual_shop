@@ -32,17 +32,17 @@ switch ($accion){
         include("../vista/productos/formulario.php");        
     break;
 
-    case "Agregar":
+    case "Agregar": case "Modificar":
         $objProductos = new Modelo_Productos();   
         
         if(isset($_FILES['imagen'])){
             $archivo = $_FILES['imagen'];
-            $nombreIMG  = $archivo["name"];
             $tipo       = $archivo["type"];
             $nombreTemp = $archivo["tmp_name"];
             $tamanho    = $archivo["size"];
             $destino    = "../images/productos/";
-
+            $ext = substr( strrchr($archivo["name"], '.'), 1);
+            $nombreIMG  = $_POST['id'].".".$ext;
             @unlink($destino.$nombreIMG);
             $resultado = @move_uploaded_file($nombreTemp, $destino.$nombreIMG);
             if ($resultado){
@@ -63,22 +63,19 @@ switch ($accion){
         $objProductos->cantidadMinima    =  $_POST['cantidadMinima'];
         $objProductos->idCategoria       =  $_POST['categoria'];
         $objProductos->idUnidad          =  $_POST['medida'];
-        $objProductos->agregar();
-    break;
-
-    case "Modificar":
-        $objProductos = new Modelo_Productos();
-        $objProductos->id = htmlspecialchars($_POST['id'],ENT_QUOTES,'UTF-8');
-        $objProductos->idSeccion = htmlspecialchars($_POST['idSeccion'],ENT_QUOTES,'UTF-8');
-        $objProductos->nombre = htmlspecialchars($_POST['nombre'],ENT_QUOTES,'UTF-8');
-        $objProductos->descripcion = htmlspecialchars($_POST['descripcion'],ENT_QUOTES,'UTF-8');
-        $objProductos->modificar();
+        if ($accion == "Agregar") {
+            $objProductos->agregar();
+        }else{
+            $objProductos->modificar();
+        }
     break;
 
     case "Eliminar":
+        echo "Accion: ".$accion;
         $objProductos = new Modelo_Productos();
         $objProductos->id = htmlspecialchars($_POST['id'],ENT_QUOTES,'UTF-8');
         $objProductos->eliminar();
+        @unlink("../images/productos/".$_POST['id']);
     break;
 
 

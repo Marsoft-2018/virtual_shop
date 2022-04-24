@@ -5,8 +5,8 @@
     $id = "";
     $funcionBoton = "agregarProducto()";
     if(isset($_REQUEST['id'])){
-        $objProducto->id = $_REQUEST['id'];
-        foreach ($objProducto->cargar() as $producto) {
+        $objProductos->id = $_REQUEST['id'];
+        foreach ($objProductos->cargar() as $producto) {
             $id = $producto['id'];
             
             $nombre = $producto['nombre'];
@@ -22,8 +22,8 @@
             $existencias = $producto['existencias'];
             $cantidadMinima = $producto['cantidadMinima'];
             $imagen = $producto['imagen'];
-            $categoria = $producto['categoria'];
-            $unidad = $producto['unidad'];
+            $categoria = $producto['idCategoria'];
+            $idMedida = $producto['idUnidad'];
             $funcionBoton = "modificarProducto('".$id."')";
         }
     }

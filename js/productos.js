@@ -43,6 +43,20 @@ function nuevoProducto(){
     });
 }
 
+function editarProducto(id){
+    $.ajax({
+        type: "POST",
+        url:"../controlador/ctrlProductos.php",
+        data:{accion:"Editar",id:id},
+        success:function(response){
+            $("#contenido_modal").html(response);
+        },
+        error: function(err){
+            console.log("El error es: "+err);
+        }
+    });
+}
+
 function cargarCategorias(idSeccion){
     $.ajax({
         type: "POST",
@@ -64,9 +78,33 @@ function cargarCategorias(idSeccion){
 }
 
 function agregarProducto(){
-    var imagen = $('#imagen').prop('files')[0];  
-	var accion = "Agregar";
-            
+    guardarProducto("Agregar");
+    listar_productos();
+}
+
+function modificarProducto(){
+    guardarProducto("Modificar");
+    listar_productos();
+}
+
+function eliminarProducto(id){
+    $.ajax({
+        type: 'POST',
+        url: "../controlador/ctrlProductos.php",
+        data:  {accion:"Eliminar", id:id}, 
+        success: function(data){                
+            //$("#datosProductos").html(data);
+            console.log("respose: "+data);
+            listar_productos();
+        },
+        error: function(data){
+            console.log('Error: '+data);
+        }
+    }); 
+}
+
+function guardarProducto(accion){
+    var imagen = $('#imagen').prop('files')[0];             
     var formulario = new FormData();    
     formulario.append('id', $('#id').val() );
     formulario.append('imagen',imagen);

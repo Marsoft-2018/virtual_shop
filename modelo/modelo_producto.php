@@ -46,7 +46,7 @@
         }
 
         function cargar(){
-            $sql = "SELECT * FROM `productos` WHERE `id` = '$this->id'";
+            $sql = "SELECT * FROM productos WHERE id = '$this->id'";
             $arreglo = array();
             if($consulta = $this->conexion->query($sql)){
                 while($consulta_vu = mysqli_fetch_assoc($consulta)) {
@@ -79,6 +79,26 @@
             //     }
              
             // $stmt->close();
+        }
+        
+        function modificar() {
+            $this->sql = "UPDATE productos SET nombre = '".$this->nombre."', referencia = '".$this->referencia."', descripcion = '".$this->descripcion."', precioCompra = '".$this->precioCompra."', precioVenta = '".$this->precioVenta."', cantidadInicial = '".$this->cantidadInicial."', cantidadMinima = '".$this->cantidadMinima."', idCategoria = '".$this->idCategoria."', idUnidad = '".$this->idUnidad."', imagen = '".$this->imagen."' WHERE id = '".$this->id."'";
+            if($consulta = $this->conexion->query($this->sql)){
+                echo "Registro guardado con éxito";
+                //$this->conexion->cerrar();                
+            } else {
+                    echo "Registro no modificado";
+            } 
+        }
+                
+        function eliminar() {
+            $this->sql = "DELETE FROM productos WHERE id = '".$this->id."'";
+            if($consulta = $this->conexion->query($this->sql)){
+                echo "Registro eliminado con éxito";
+                //$this->conexion->cerrar();                
+            } else {
+                echo "Registro no eliminado";
+            } 
         }
     }
        
