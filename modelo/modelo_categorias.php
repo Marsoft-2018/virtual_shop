@@ -8,18 +8,18 @@ class Modelo_Categorias extends conexion{
 	function listar() {
 	 	$sql = "SELECT `categorias`.`id`, `categorias`.`nombre`, `categorias`.`descripcion`
     , `categorias`.`idSeccion`, `secciones`.`nombre` AS `seccion`, `categorias`.`estado`
-    , `categorias`.`fechaRegistro` FROM `categorias`
-    INNER JOIN `secciones` 
+    , `categorias`.`fechaRegistro` FROM `categorias` INNER JOIN `secciones` 
         ON (`categorias`.`idSeccion` = `secciones`.`id`)
         WHERE categorias.`idSeccion` = '".$this->idSeccion."'";
-			$arreglo = array();
-			if($consulta = $this->conexion->query($sql)){
-				while($consulta_vu = mysqli_fetch_assoc($consulta)) {
-						$arreglo[] =$consulta_vu;
-					
-				}
-				return $arreglo;
-				$this->conexion->cerrar();
+		
+		$arreglo = array();
+		
+		if($consulta = $this->conexion->query($sql)){
+			while($consulta_vu = mysqli_fetch_assoc($consulta)) {
+				$arreglo[] =$consulta_vu;				
+			}
+			return $arreglo;
+			$this->conexion->cerrar();
 		}
  	}
 	
@@ -73,6 +73,7 @@ class Modelo_Categorias extends conexion{
  			echo "Error: ".$e;
  		}		
  	}
+	 
 }
 
 

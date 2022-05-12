@@ -114,6 +114,7 @@ function guardarProducto(accion){
     formulario.append('precioCompra',$("#precioCompra").val());
     formulario.append('precioVenta',$("#precioVenta").val());
     formulario.append('cantidadMinima',$("#cantidadMinima").val());
+    formulario.append('cantidadInicial',$("#cantidadInicial").val());
     formulario.append('categoria',$("#categoria").val());
     formulario.append('medida',$("#medida").val());
 

@@ -59,7 +59,7 @@ switch ($accion){
         $objProductos->descripcion       =  $_POST['descripcion'];
         $objProductos->precioCompra      =  $_POST['precioCompra'];
         $objProductos->precioVenta       =  $_POST['precioVenta'];
-        //$objProductos->cantidadInicial =  $_POST['cantidadInicial'];
+        $objProductos->cantidadInicial   =  $_POST['cantidadInicial'];
         $objProductos->cantidadMinima    =  $_POST['cantidadMinima'];
         $objProductos->idCategoria       =  $_POST['categoria'];
         $objProductos->idUnidad          =  $_POST['medida'];

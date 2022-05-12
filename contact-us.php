@@ -285,7 +285,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
-                        <h2>GET IN TOUCH</h2>
+                        <h2>PONERSE EN CONTACTO</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio justo, ultrices ac nisl sed, lobortis porta elit. Fusce in metus ac ex venenatis ultricies at cursus mauris.</p>
                         <form id="contactForm">
                             <div class="row">

@@ -3,6 +3,7 @@
     $descripcion = "";
     $referencia = "";
     $id = "";
+    $idSeccion = "";
     $funcionBoton = "agregarProducto()";
     if(isset($_REQUEST['id'])){
         $objProductos->id = $_REQUEST['id'];
@@ -23,6 +24,7 @@
             $cantidadMinima = $producto['cantidadMinima'];
             $imagen = $producto['imagen'];
             $categoria = $producto['idCategoria'];
+            $idSeccion = $producto['idSeccion'];
             $idMedida = $producto['idUnidad'];
             $funcionBoton = "modificarProducto('".$id."')";
         }
@@ -99,6 +101,19 @@
             <select class="form form-control js-example-basic-single"
              name="state" style="width: 100%;" id="categoria">
                 <option value="">Seleccione...</option>
+                <?php
+                    $objCat = new Modelo_Categorias();
+                    $objCat->idSeccion = $idSeccion;
+                    foreach($objCat->listar() as $category){
+                        $catSel = "";
+                        if($category['id'] == $categoria){
+                            $catSel = "selected";
+                        }
+                        ?>
+                        <option value="<?php echo $category['id'] ?>" <?php echo $catSel ?>><?php echo $category['nombre'] ?></option>
+                        <?php
+                    }
+                ?>
                   
             </select>
         </div>
@@ -119,7 +134,17 @@
         </div>
         <div class="col-lg-6">
             <label for=""><b>Imagen:</b></label>
-            <img src="" alt="" class="previsualizar img-fluid">
+            <?php
+                if(isset($imagen)){?>
+                <img src="../images/productos/<?php echo $imagen ?>" alt="" class="previsualizar img-fluid">
+                <?php
+                    }else{
+                ?>
+                    <img src="" alt="" class="previsualizar img-fluid">
+                <?php
+                    }
+
+            ?>
             <input type="file" id="imagen" value="<?php echo $imagen; ?>" class="form-control" onchange="previsualizar(this)" placeholder="Nombre"><br>
         </div>
 

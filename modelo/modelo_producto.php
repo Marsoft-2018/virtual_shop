@@ -22,16 +22,11 @@
         private $datos;
         
         function listar() {
-            $sql = "SELECT p.id,p.nombre,p.referencia,p.descripcion,
-            p.precioCompra,p.precioVenta,
-            p.cantidadInicial,p.compras,p.ventas,p.devoluciones,
-            p.existencias,p.cantidadMinima,p.imagen,p.estado,p.fecha_reg,
-            cat.nombre AS categoria, uni.nombre AS unidad
-            
-             FROM 
-             productos AS p
-              INNER JOIN `unidades` AS uni  ON (`p`.`idUnidad` = `uni`.`id`)
-              INNER JOIN `categorias`  AS cat ON (`p`.`idCategoria` = `cat`.`id`)
+            $sql = "SELECT p.id,p.nombre,p.referencia,p.descripcion, p.precioCompra,p.precioVenta, p.cantidadInicial,p.compras,p.ventas,p.devoluciones, p.existencias,p.cantidadMinima,p.imagen,p.estado,p.fecha_reg, p.idCategoria, cat.nombre AS categoria, uni.nombre AS unidad, cat.`idSeccion`, sec.nombre
+            FROM productos AS p
+            INNER JOIN `unidades` AS uni  ON (`p`.`idUnidad` = `uni`.`id`)
+            INNER JOIN `categorias`  AS cat ON (`p`.`idCategoria` = `cat`.`id`)
+            INNER JOIN `secciones` AS sec ON sec.`id` = cat.`idSeccion`
               
               ORDER BY p.nombre ASC
               LIMIT 0,10";
@@ -46,7 +41,11 @@
         }
 
         function cargar(){
-            $sql = "SELECT * FROM productos WHERE id = '$this->id'";
+            $sql = "SELECT p.id,p.nombre,p.referencia,p.descripcion, p.precioCompra,p.precioVenta, p.cantidadInicial,p.compras,p.ventas,p.devoluciones, p.existencias,p.cantidadMinima,p.imagen,p.estado,p.fecha_reg, p.idCategoria, cat.nombre AS categoria, p.idUnidad, uni.nombre AS unidad, cat.`idSeccion`, sec.nombre
+            FROM productos AS p
+            INNER JOIN `unidades` AS uni  ON (`p`.`idUnidad` = `uni`.`id`)
+            INNER JOIN `categorias`  AS cat ON (`p`.`idCategoria` = `cat`.`id`)
+            INNER JOIN `secciones` AS sec ON sec.`id` = cat.`idSeccion` WHERE p.id = '$this->id'";
             $arreglo = array();
             if($consulta = $this->conexion->query($sql)){
                 while($consulta_vu = mysqli_fetch_assoc($consulta)) {
