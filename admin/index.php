@@ -411,8 +411,8 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<!-- AdminLTE for demo purposes 
+<script src="dist/js/demo.js"></script>-->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
@@ -422,6 +422,7 @@
 <script src="../js/secciones.js"></script>
 <script src="../js/unidades.js"></script>
 <script src="../js/rol.js"></script>
+<script src="../js/usuarios.js"></script>
 
 <script src="../js/productos.js"></script>
 <script src="../js/proveedores.js"></script>
