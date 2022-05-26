@@ -1,6 +1,7 @@
 <?php 
 
-include("../modelo/modelo_conexion.php");
+require("../modelo/modelo_conexion.php");
+require("../modelo/modelo_paises.php");
 require("../modelo/modelo_usuarios.php");
 require("../modelo/modelo_roles.php");
 
@@ -26,6 +27,7 @@ switch ($accion){
     case "Nuevo": case "Editar":
         $objUsuarios = new Modelo_Usuarios();
         $objRoles = new Modelo_Roles();
+        $objPaises = new Modelo_Pais();
       
        // $objSeccion = new Modelo_Secciones();
         include("../vista/usuarios/formulario.php");        
@@ -34,25 +36,6 @@ switch ($accion){
     case "Agregar": case "Modificar":
         $objUsuarios = new Modelo_Usuarios();   
         
-        if(isset($_FILES['imagen'])){
-            $archivo = $_FILES['imagen'];
-            $tipo       = $archivo["type"];
-            $nombreTemp = $archivo["tmp_name"];
-            $tamanho    = $archivo["size"];
-            $destino    = "../images/usuarios/";
-            $ext = substr( strrchr($archivo["name"], '.'), 1);
-            $nombreIMG  = $_POST['nombreUsuario'].".".$ext;
-            @unlink($destino.$nombreIMG);
-            $resultado = @move_uploaded_file($nombreTemp, $destino.$nombreIMG);
-           
-            if ($resultado){
-                $objUsuarios->imagen = $nombreIMG;                
-            } else {
-                $objUsuarios->imagen = "default.png"; 
-            }
-        }else{
-           $objUsuarios->imagen = "default.png"; 
-        }
         $objUsuarios->email          =  $_POST['email'];
         $objUsuarios->nombreUsuario  =  $_POST['nombreUsuario'];
         $objUsuarios->clave  =  $_POST['clave'];

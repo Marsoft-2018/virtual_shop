@@ -10,7 +10,6 @@
             <th>2do Apellido</th>
             <th>Tipo Doc</th>
             <th>Numero</th>
-            <th>Foto</th>
             <th>Ciudad</th>
             <th>Direccion</th>
             <th>Telefono</th>
@@ -36,7 +35,6 @@
                 <td><?php echo $value['segundoApellido'] ?></td>
                 <td><?php echo $value['TipoDoc'] ?></td>
                 <td><?php echo $value['numerodoc'] ?></td>
-                <td><img src="../images/usuarios/<?php  echo $value['foto']?>" class="img-circle  img-fluid" ></td>
                 <td><?php echo $value['ciudad'] ?></td>
                 <td><?php echo $value['direccion'] ?></td>
                 <td><?php echo $value['telefono'] ?></td>

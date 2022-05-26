@@ -68,7 +68,7 @@
         }
 
         function agregar() {
-            $this->sql = "INSERT INTO usuarios(email, nombreUsuario, clave, idRol, primerNombre, segundoNombre, primerApellido, segundoApellido, TipoDoc, numerodoc, foto,ciudad,direccion,telefono) VALUES('".$this->email."', '".$this->nombreUsuario."', '".$this->clave."', '".$this->idRol."', '".$this->primerNombre."', '".$this->segundoNombre."', '".$this->primerApellido."', '".$this->segundoApellido."', '".$this->TipoDoc."', '".$this->numerodoc."', '".$this->foto."','".$this->ciudad."','".$this->direccion."','".$this->telefono."')";
+            $this->sql = "INSERT INTO usuarios(email, nombreUsuario, clave, idRol, primerNombre, segundoNombre, primerApellido, segundoApellido, TipoDoc, numerodoc, ciudad,direccion,telefono) VALUES('".$this->email."', '".$this->nombreUsuario."', '".$this->clave."', '".$this->idRol."', '".$this->primerNombre."', '".$this->segundoNombre."', '".$this->primerApellido."', '".$this->segundoApellido."', '".$this->TipoDoc."', '".$this->numerodoc."','".$this->ciudad."','".$this->direccion."','".$this->telefono."')";
 
             if($consulta = $this->conexion->query($this->sql)){
                 echo "Registro agregado con éxito";

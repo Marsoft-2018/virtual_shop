@@ -9,7 +9,6 @@
     $segundoApellido = "";
     $TipoDoc = "";
     $numerodoc = "";
-    $foto = "";
     $ciudad = "";
     $direccion = "";
     $telefono = "";
@@ -88,7 +87,7 @@
             <label for=""><b>Segundo Apellido:</b></label>
             <input type="text" id="segundoApellido" value="<?php echo $segundoApellido; ?>" class="form-control" placeholder="Nombre"><br>
         </div>
-         <div class="col-lg-3">
+         <div class="col-lg-6">
             <label for=""><b>Tipo Documento</b> </label>
                 <select class="form form-control js-example-basic-single" name="state"
                         style="width: 100%;" id="TipoDoc"> 
@@ -98,29 +97,40 @@
                     <option value="PP">Pasaporte</option>
                         </select> <br> <br>
             </div>
-             <div class="col-lg-3">
+             <div class="col-lg-6">
             <label for=""><b>Documento:</b></label>
             <input type="text" id="numerodoc" value="<?php echo $numerodoc; ?>" class="form-control" placeholder="Documento"><br>
+        </div>        
+        <div class="col-lg-4">
+            <label for=""><b>Pais:</b></label>
+            <select name="" id="pais"  class="form-control" onchange="cargarDepartamentos(this.value)">
+                <option value="">Seleccione...</option>
+                <?php
+                    foreach ($objPaises->cargar() as $pais) { ?>
+                     <option value="<?php echo $pais['id'] ?>"><?php echo $pais['nombre'] ?></option>   
+                <?php 
+                   } 
+                ?>
+            </select>
+        </div>                
+        <div class="col-lg-4">
+            <label for=""><b>Departamento:</b></label>
+            <select name="" id="departamentos"  class="form-control"  onchange="cargarCiudades(this.value)">
+                <option value="">Seleccione...</option>
+            </select>
         </div>
-        
-        
-    
-        <div class="col-lg-6">
-            <label for=""><b>Imagen:</b></label>
-            <img src="" alt="" class="previsualizar img-fluid">
-            <input type="file" id="imagen" value="<?php echo $foto; ?>" class="form-control" onchange="previsualizar(this)" placeholder="Nombre"><br>
-        </div>
-
         <div class="col-lg-4">
             <label for=""><b>Ciudad:</b></label>
-            <input type="text" id="ciudad" value="<?php echo $ciudad; ?>" class="form-control" placeholder=""><br>
+            <select name="" id="ciudad"  class="form-control">
+                <option value="">Seleccione...</option>
+            </select>
         </div>
 
-         <div class="col-lg-4">
+         <div class="col-lg-6">
             <label for=""><b>Direccion:</b></label>
             <input type="text" id="direccion" value="<?php echo $direccion; ?>" class="form-control" placeholder=""><br>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <label for=""><b>Telefono:</b></label>
             <input type="text" id="telefono" value="<?php echo $telefono; ?>" class="form-control" placeholder=""><br>
         </div>

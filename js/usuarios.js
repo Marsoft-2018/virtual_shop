@@ -57,11 +57,9 @@ function editarUsuario(email){
     });
 }
 
-
-
 function agregarUsuario(){
     guardarUsuario("Agregar");
-    listar_usuarios();
+    //listar_usuarios();
 }
 
 function modificarUsuario(){
@@ -86,30 +84,40 @@ function eliminarUsuario(email){
 }
 
 function guardarUsuario(accion){
-    var imagen = $('#imagen').prop('files')[0];             
-    var formulario = new FormData();    
-    formulario.append('email', $('#email').val() );
-    formulario.append('imagen',imagen);
-    formulario.append('nombreUsuario',$("#nombreUsuario").val());    
-    formulario.append('clave',$("#clave").val());
-    formulario.append('idRol',$("#idRol").val());
-    formulario.append('primerNombre',$("#primerNombre").val());
-    formulario.append('segundoNombre',$("#segundoNombre").val());
-    formulario.append('primerApellido',$("#primerApellido").val());
-    formulario.append('segundoApellido',$("#segundoApellido").val());
-    formulario.append('TipoDoc',$("#TipoDoc").val());
-    formulario.append('numerodoc',$("#numerodoc").val());
-    formulario.append('ciudad',$("#ciudad").val());
-    formulario.append('direccion',$("#direccion").val());
-    formulario.append('telefono',$("#telefono").val());
+        
+    var email =  $('#email').val() ;
+    var nombreUsuario = $("#nombreUsuario").val();    
+    var clave = $("#clave").val();
+    var idRol = $("#idRol").val();
+    var primerNombre = $("#primerNombre").val();
+    var segundoNombre = $("#segundoNombre").val();
+    var primerApellido = $("#primerApellido").val();
+    var segundoApellido = $("#segundoApellido").val();
+    var TipoDoc = $("#TipoDoc").val();
+    var numerodoc = $("#numerodoc").val();
+    var ciudad = $("#ciudad").val();
+    var direccion = $("#direccion").val();
+    var telefono = $("#telefono").val();
 
     $.ajax({
         type: 'POST',
-        url: "../controlador/ctrlUsuarios.php?accion="+accion,
-        data:  formulario,                        
-        processData:false,
-        cache:false,
-        contentType: false,
+        url: "../controlador/ctrlUsuarios.php",
+        data:  {
+            accion:accion,
+            email:email,
+            nombreUsuario:nombreUsuario,
+            clave:clave,
+            idRol:idRol,
+            primerNombre:primerNombre,
+            segundoNombre:segundoNombre,
+            primerApellido:primerApellido,
+            segundoApellido:segundoApellido,
+            TipoDoc:TipoDoc,
+            numerodoc:numerodoc,
+            ciudad:ciudad,
+            direccion:direccion,
+            telefono:telefono
+        }, 
         success: function(data){                
             //$("#datosProductos").html(data);
             console.log("respose: "+data);
@@ -118,4 +126,47 @@ function guardarUsuario(accion){
             console.log('Error: '+data);
         }
     }); 
+}
+
+function cargarDepartamentos(idPais){
+    $.ajax({
+        type: "POST",
+        url:"../controlador/ctrlDepartamentos.php",
+        data:{accion:"listarDatos",idPais:idPais},
+        success:function(response){
+            response = JSON.parse(response);
+            $("#departamentos").html("");
+            $("#departamentos").append("<option value=''>Seleccione...</option>");
+            $.each(response,function(i,item){
+				$("#departamentos").append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
+			});
+            console.log("Datos: "+response);
+            //$("#contenido_modal").html(response);
+        },
+        error: function(err){
+            console.log("El error es: "+err);
+        }
+    })
+}
+
+
+function cargarCiudades(idDepartamento){
+    $.ajax({
+        type: "POST",
+        url:"../controlador/ctrlCiudades.php",
+        data:{accion:"listarDatos",idDepartamento:idDepartamento},
+        success:function(response){
+            response = JSON.parse(response);
+            $("#ciudad").html("");
+            $("#ciudad").append("<option value=''>Seleccione...</option>");
+            $.each(response,function(i,item){
+				$("#ciudad").append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
+			});
+            console.log("Datos: "+response);
+            //$("#contenido_modal").html(response);
+        },
+        error: function(err){
+            console.log("El error es: "+err);
+        }
+    })
 }
