@@ -2,6 +2,8 @@
 
 require("../modelo/modelo_conexion.php");
 require("../modelo/modelo_paises.php");
+require("../modelo/modelo_departamentos.php");
+require("../modelo/modelo_ciudades.php");
 require("../modelo/modelo_usuarios.php");
 require("../modelo/modelo_roles.php");
 
@@ -28,6 +30,8 @@ switch ($accion){
         $objUsuarios = new Modelo_Usuarios();
         $objRoles = new Modelo_Roles();
         $objPaises = new Modelo_Pais();
+        $objDepartamento = new Modelo_Departamento();    
+        $objCiudad = new Modelo_Ciudad();    
       
        // $objSeccion = new Modelo_Secciones();
         include("../vista/usuarios/formulario.php");        

@@ -16,6 +16,7 @@
             <th>Estado</th>
             <th>Fecha Registro</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -43,9 +44,11 @@
                 <td><?php     echo $value['estado'] ?></td>
                 <td><?php echo $value['fechaRegistro'] ?></td>
                 <td>
-                    <button class="btn btn-warning"  data-toggle="modal" data-target="#ventana_modal"  onclick="editarUsuario('<?php echo $value['email'] ?>')">
-                        editar
+                    <button class="btn btn-warning"  title="Editar" data-toggle="modal" data-target="#ventana_modal"  onclick="editarUsuario('<?php echo $value['email'] ?>')">
+                    <i class="fa fa-edit"></i>
                     </button> 
+                </td>
+                <td>
                     <button class="btn btn-danger" onclick="eliminarUsuario('<?php echo $value['email'] ?>')"><i class="fa fa-trash"></i></button>   
                 </td>
             </tr>

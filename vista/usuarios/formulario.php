@@ -12,6 +12,9 @@
     $ciudad = "";
     $direccion = "";
     $telefono = "";
+    $idPais = "";
+    $departamento = "";
+    $ciudad = "";
     
     $funcionBoton = "agregarUsuario()";
     if(isset($_REQUEST['email'])){
@@ -30,12 +33,20 @@
             $numerodoc = $usuario['numerodoc'];
             $foto = $usuario['foto'];
             $ciudad = $usuario['ciudad'];
-           
+            $objCity = new Modelo_Ciudad();
+            $objCity->id = $ciudad;            
+            foreach ($objCity->cargar() as $city) {
+                $departamento = $city['idDepto'];                
+            }
+
+            $objDepar = new Modelo_Departamento();
+            $objDepar->id = $departamento;
+            foreach ($objDepar->cargar() as $value) {
+                $idPais = $value['idPais'];                
+            }
+
             $direccion = $usuario['direccion'];
-            $telefono = $usuario['telefono'];
-           
-           
-         
+            $telefono = $usuario['telefono'];         
             $funcionBoton = "modificarUsuario('".$email."')";
         }
     }
@@ -62,11 +73,11 @@
                 <option value="">Seleccione...</option>
                 <?php
                     $objRoles = new Modelo_Roles();
-                    foreach ($objRoles->listar() as $value) {
+                    foreach ($objRoles->listar() as $rol) {
                         $sel = "";
-                        if($objRoles == $value['id'] ){ $sel = "selected"; }
+                        if($rol['id'] == $idRol ){ $sel = "selected"; }
                         ?>
-                        <option value="<?php echo $value['id']; ?>" <?php echo $sel ?>><?php echo $value['nombre'] ?></option>
+                        <option value="<?php echo $rol['id']; ?>" <?php echo $sel ?>><?php echo $rol['nombre'] ?></option>
                     <?php } ?>   
             </select>
         </div>
@@ -106,8 +117,13 @@
             <select name="" id="pais"  class="form-control" onchange="cargarDepartamentos(this.value)">
                 <option value="">Seleccione...</option>
                 <?php
-                    foreach ($objPaises->cargar() as $pais) { ?>
-                     <option value="<?php echo $pais['id'] ?>"><?php echo $pais['nombre'] ?></option>   
+                    foreach ($objPaises->cargar() as $pais) { 
+                        $sel = "";
+                        if($pais['id'] == $idPais){
+                            $sel = "selected";
+                        }
+                    ?>
+                     <option value="<?php echo $pais['id'] ?>" <?php echo $sel ?>><?php echo $pais['nombre'] ?></option>   
                 <?php 
                    } 
                 ?>
@@ -117,12 +133,38 @@
             <label for=""><b>Departamento:</b></label>
             <select name="" id="departamentos"  class="form-control"  onchange="cargarCiudades(this.value)">
                 <option value="">Seleccione...</option>
+                <?php       
+                    $objDepartamento->idPais = $idPais;
+                    foreach ($objDepartamento->listar() as $depto) { 
+                        $sel = "";
+                        if($depto['id'] == $departamento){
+                            $sel = "selected";
+                        }
+
+                    ?>
+                     <option value="<?php echo $depto['id'] ?>" <?php echo $sel ?>><?php echo $depto['nombre'] ?></option>   
+                <?php 
+                   } 
+                ?>
             </select>
         </div>
         <div class="col-lg-4">
             <label for=""><b>Ciudad:</b></label>
             <select name="" id="ciudad"  class="form-control">
                 <option value="">Seleccione...</option>
+                <?php       
+                    $objCiudad->idDepto = $departamento;
+                    foreach ($objCiudad->listar() as $cities) { 
+                        $sel = "";
+                        if($cities['id'] == $ciudad){
+                            $sel = "selected";
+                        }
+
+                    ?>
+                     <option value="<?php echo $cities['id'] ?>" <?php echo $sel ?>><?php echo $cities['nombre'] ?></option>   
+                <?php 
+                   } 
+                ?>
             </select>
         </div>
 

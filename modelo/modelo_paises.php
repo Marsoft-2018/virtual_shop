@@ -14,6 +14,17 @@
                 return $arreglo;
             }
         }
+        public function cargarId(){
+            $sql = "SELECT * FROM paises WHERE id= '".$this->id."'";
+            $arreglo = array();
+            if($consulta = $this->conexion->query($sql)){
+                while($consulta_vu = mysqli_fetch_assoc($consulta)) {
+                    $arreglo[] =$consulta_vu;                    
+                }
+                $this->conexion->close();
+                return $arreglo;
+            }
+        }
     }
 
 ?>
